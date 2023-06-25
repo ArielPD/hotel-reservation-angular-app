@@ -1,1 +1,41 @@
-<button mat-button>Hello</button>
+<h4>New Booking</h4>
+<form [formGroup]="formGroup">
+<mat-form-field class="w-100" floatLabel="auto" hideRequiredMarker appearance="standard" color="primary">
+  <input type="email" matInput placeholder="Enter Customer email" required="required" formControlName="email"/>
+  <mat-label>Email</mat-label>
+  <mat-hint align="end">Up to 30 characters</mat-hint>
+  <mat-icon matPrefix>email</mat-icon>
+</mat-form-field>
+
+<mat-form-field class="w-100" floatLabel="auto"  appearance="standard" color="primary">
+  <input type="text" matInput placeholder="Enter Customer Name" required="required" formControlName="customerName"/>
+  <mat-label>Customer Name</mat-label>
+  <mat-hint align="end">Up to 30 characters</mat-hint>
+  <mat-icon matPrefix>person</mat-icon>
+</mat-form-field>
+
+<mat-form-field class="w-100" floatLabel="auto"  appearance="standard" color="primary">
+  <mat-select required="required" formControlName="country">
+    <mat-optgroup label="B">
+      <mat-option value="Bolivia">Bolivia</mat-option>
+    </mat-optgroup>
+    <mat-option *ngFor="let country of countries" [value]="country.id">{{country.countryName}}</mat-option>
+  </mat-select>
+  <mat-label>Country</mat-label>
+  <mat-hint align="end">Choose a country</mat-hint>
+  <mat-icon matPrefix>place</mat-icon>
+</mat-form-field>
+
+
+
+<div class="mb">
+  <button mat-raised-button color="primary" class="mr">Save</button>
+  <button mat-raised-button color="accent" class="mr">Cancel</button>
+  <button mat-stroked-button color="warn" class="mr">Delete</button>
+</div>
+
+<div>
+  {{ formGroup.value|json}}
+</div>
+
+</form>
